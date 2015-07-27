@@ -1,1 +1,10 @@
-facepalm
+<% var messages = ["facepalm", "damn!", "wow."]; %>
+
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1><%= messages[Math.floor(Math.random() * messages.length)] %></h1>
+    </body>
+</html>
