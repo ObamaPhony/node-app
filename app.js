@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 /* modules */
 
 /* URL routes */
-var routes = require("./routes");
+app.use(require("./routes"));
 
 /* start server */
 app.listen(process.env.PORT || 8080);
