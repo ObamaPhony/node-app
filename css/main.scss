@@ -1,0 +1,8 @@
+#focus {
+    position: absolute;
+    width: 75%;
+
+    @media #{$media-slim} {
+        width: 100%;
+    }
+}
