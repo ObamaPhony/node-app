@@ -1,2 +1,8 @@
+# node {{{
 *.log
 node_modules
+# }}}
+
+# temporary files {{{
+/public/css
+# }}}
