@@ -1,0 +1,17 @@
+{
+  "name": "obama-phony",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+      "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ObamaPhony/obama-front-end.git"
+  },
+  "author": "spudowiar",
+  "bugs": {
+    "url": "https://github.com/ObamaPhony/obama-front-end/issues"
+  },
+  "homepage": "https://github.com/ObamaPhony/obama-front-end#readme"
+}
