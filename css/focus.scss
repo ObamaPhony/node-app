@@ -19,8 +19,6 @@ h1, h2 {
     @include vertical-center; /* center vertically */
     text-align: center;       /* center contents horizontally */
 
-    background: #eee;
-
     @media #{$media-slim} {
         /* smaller device, fill whole width */
         width: 100%;
