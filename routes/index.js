@@ -1,6 +1,10 @@
 var router = require("express").Router();
 module.exports = router;
 
+router.get("/", function (request, response) {
+    response.render("index");
+});
+
 router.use(function (request, response, next) {
     response.status(404);
     response.format({
