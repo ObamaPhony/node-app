@@ -23,12 +23,12 @@
     /* mouse hover */
     &:hover {
         background: $accent-light;
-        border: $accent-light 2px solid;
+        border-color: $accent-light;
     }
 
     /* mouse down, touch */
     &:active {
         background: $accent-dark;
-        border: $accent-dark 2px solid;
+        border-color: $accent-dark;
     }
 }
