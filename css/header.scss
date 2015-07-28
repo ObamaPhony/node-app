@@ -1,0 +1,33 @@
+/* media queries */
+$media-slim: "only screen and (max-width: 480px)";
+$media-fat:  "only screen and (min-width: 1200px)";
+
+* {
+    font-family: "Source Sans Pro";
+}
+
+/* vertically align element */
+@mixin vertical-center {
+    /* to vertically align an element we must
+     *   1) align the top with the middle of the container
+     *   2) use an offset of negative half (to align the middle with the middle)
+     */
+
+    /* 1) align top with middle */
+    top: 50%;
+
+    /* 2) CSS 3 */
+    -webkit-transform: translateY(-50%);
+       -moz-transform: translateY(-50%);
+         -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+
+    /* 2) Internet Explorer 8 and below */
+    filter:progid:DXImageTransform.Microsoft.Matrix(Dy=-2);
+}
+
+/* colors! */
+$accent:       #ee2020;
+$accent-light: #ff4040;
+$accent-dark:  #dd0000;
+$accent-text:  #eeeeee;
