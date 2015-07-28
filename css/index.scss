@@ -4,7 +4,7 @@
     /* bounding box */
     top:      0;
     bottom: 50%;
-    margin-bottom: 3em;
+    margin-bottom: 5em;
 
     /* styling */
     text-align: center;
@@ -22,6 +22,10 @@
 
 #nouns-content input {
     margin-top: 0.5em;
+}
+
+#trends .button {
+    margin: 1em 0.5em;
 }
 
 #userInput, #nouns input {
