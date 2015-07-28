@@ -20,3 +20,7 @@ input[type=text], input[type=search] {
     font-size: 1.5em;
     padding: 0.5em; /* we need to compensate for 1.5em font size */
 }
+
+::-webkit-search-cancel-button {
+    display: none;
+}

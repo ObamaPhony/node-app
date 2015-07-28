@@ -1,0 +1,29 @@
+#nouns {
+    position: absolute;
+
+    /* bounding box */
+    top:      0;
+    bottom: 50%;
+    margin-bottom: 3em;
+
+    /* styling */
+    text-align: center;
+
+    /* scrolling */
+    overflow-y: auto;
+}
+
+#nouns-content {
+    max-height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+#nouns-content input {
+    margin-top: 0.5em;
+}
+
+#userInput, #nouns input {
+    width: 100%;
+}

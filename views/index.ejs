@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/css/style.css" />
+        <% include header.ejs %>
+        <script src="/script/index.js"></script>
     </head>
     <body>
+        <div id="nouns" class="focus">
+            <div id="nouns-content"></div>
+        </div>
         <div id="focus">
-            <input type="search" id="search" />
-            <a class="button">Test</a>
+            <noscript><h1>What? Why no JavaScript!</h1></noscript>
+            <input type="text" id="userInput" placeholder="Enter a noun" />
         </div>
     </body>
 </html>
