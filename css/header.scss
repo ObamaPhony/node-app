@@ -1,6 +1,8 @@
 /* media queries */
-$media-slim: "only screen and (max-device-width: 480px)";
-$media-fat:  "only screen and (min-width: 1200px)";
+$media-slim:  "only screen and (max-device-width:  480px)";
+$media-short: "only screen and (max-device-height: 720px) and (orientation: landscape)";
+
+$media-fat:   "only screen and (min-width: 1200px)";
 
 * {
     font-family: "Source Sans Pro";
