@@ -1,8 +1,38 @@
+h1, h2 {
+    font-weight: 300;
+}
+
 #focus {
+    /*
+     * this is the focus of the page, should be prominent but minimal
+     * centered vertically but horizontally only on larger devices
+     * on smaller devices, uses whole width
+     */
+
+    /* don't use all of page (horizontally) */
     position: absolute;
     width: 75%;
+    /* center on page */
+    left:  12.5%;
+    right: 12.5%;
+
+    @include vertical-center; /* center vertically */
+    text-align: center;       /* center contents horizontally */
 
     @media #{$media-slim} {
+        /* smaller device, fill whole width */
         width: 100%;
+        left:   0px;
+        right:  0px;
+    }
+
+    @media #{$media-fat} {
+        /* larger device, make it small and in the middle */
+        width: 800px;
+
+        /* we don't know the percentage of the screen size */
+        left: 50%;
+        right: auto;
+        margin-left: -400px;
     }
 }

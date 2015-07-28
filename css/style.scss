@@ -1,3 +1,28 @@
-$media-slim: "only screen and (max-device-width: 480px)";
+/* media queries */
+$media-slim: "only screen and (max-width: 480px)";
+$media-fat:  "only screen and (min-width: 1200px)";
+
+* {
+    font-family: "Source Sans Pro";
+}
+
+@mixin vertical-center {
+    /* to vertically align and element we
+     * 1) align the top with the middle of the container
+     * 2) use an offset of negative half (to align the middle with the middle)
+     */
+
+    /* align top with middle */
+    top: 50%;
+
+    /* CSS 3 (offset) */
+    -webkit-transform: translateY(-50%);
+       -moz-transform: translateY(-50%);
+         -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+
+    /* Internet Explorer 8 and below (offset) */
+    filter:progid:DXImageTransform.Microsoft.Matrix(Dy=-2);
+}
 
 @import "main";
