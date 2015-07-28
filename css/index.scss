@@ -31,3 +31,18 @@
 #userInput, #nouns input {
     width: 100%;
 }
+
+#trends .button.hidden {
+    /* should only have height, no width */
+
+    border-left: 0px;
+    border-right: 0px;
+
+    padding-left: 0px;
+    padding-right: 0px;
+
+    margin-left: 0px;
+    margin-right: 0px;
+
+    width: 0px;
+}

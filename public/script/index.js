@@ -1,6 +1,8 @@
 $(function () {
+    /* Google Trends {{{ */
+    var TRENDS = 5;
     $.ajax({
-        url: "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://www.google.com/trends/hottrends/atom/feed?pn=p1",
+        url: "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://www.google.com/trends/hottrends/atom/feed?pn=p1&num=" + TRENDS,
         jsonp: "callback",
         dataType: "jsonp",
         success: function (data) {
@@ -16,7 +18,9 @@ $(function () {
             }
         }
     });
+    /* }}} */
 
+    /* input box management {{{ */
     var punctuation = /[^a-zA-Z0-9 ]+/;
     function fix(value) {
         return value.replace(punctuation, "").replace(/\s/, " ").replace(/ +/, " ");
@@ -34,4 +38,5 @@ $(function () {
             $("#nouns").animate({ scrollTop: $("#nouns")[0].scrollHeight });
         }
     });
+    /* }}} */
 });
