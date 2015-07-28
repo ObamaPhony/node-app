@@ -4,10 +4,15 @@ $(function () {
         jsonp: "callback",
         dataType: "jsonp",
         success: function (data) {
-            var trends = [];
             var feed = data.responseData.feed.entries;
             for (var i = 0; i < feed.length; i++) {
-                trends.push(feed[i].title);
+                var trend = feed[i].title;
+                $("<a/>").text(trend).addClass("button").click(function () {
+                    $(this).hide();
+                    var e = $.Event("keydown");
+                    e.keyCode = 13;
+                    $("#userInput").val($(this).text()).trigger(e);
+                }).appendTo("#trends");
             }
         }
     });
