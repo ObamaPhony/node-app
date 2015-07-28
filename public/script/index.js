@@ -12,7 +12,7 @@ $(function () {
                     var e = $.Event("keydown");
                     e.keyCode = 13;
                     $("#userInput").val($(this).text()).trigger(e);
-                }).appendTo("#trends");
+                }).prependTo("#trends");
             }
         }
     });
