@@ -1,4 +1,4 @@
-<% var messages = ["facepalm", "damn!", "wow."]; %>
+<% var messages = ["facepalm", "damn!", "wow.", "those were the droids we were looking for", "WHY ME?"]; %>
 
 <!DOCTYPE html>
 <html>
@@ -8,7 +8,9 @@
     <body>
         <div id="focus">
             <h1><%= messages[Math.floor(Math.random() * messages.length)] %></h1>
+            <h2>BTW, something went real bad wrong.</h2>
             <a class="button" href="/">Home</a>
+            <a class="button" onclick="location.reload(); return false" href=".">Try Again</a>
         </div>
     </body>
 </html>
