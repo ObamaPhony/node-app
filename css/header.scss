@@ -1,5 +1,5 @@
 /* media queries */
-$media-slim: "only screen and (max-width: 480px)";
+$media-slim: "only screen and (max-device-width: 480px)";
 $media-fat:  "only screen and (min-width: 1200px)";
 
 * {
