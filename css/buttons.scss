@@ -1,0 +1,25 @@
+[type=button], button, .button {
+    /* needed for a.button (and others) */
+    display: inline-block;
+    text-decoration: none;
+
+    /* never use focus border */
+    outline: none;
+
+    /* normalise padding */
+    padding: 1em;
+
+    /* accent colors */
+    background: $accent;
+    color: $accent-text;
+
+    /* mouse hover */
+    &:hover {
+        background: $accent-light;
+    }
+
+    /* mouse down, touch */
+    &:active {
+        background: $accent-dark;
+    }
+}
