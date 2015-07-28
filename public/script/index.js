@@ -11,7 +11,7 @@ $(function () {
                 var trend = feed[i].title;
                 $("<a/>").text(trend).addClass("button").click(function () {
                     $(this).hide();
-                    var e = $.Event("keydown");
+                    var e = $.Event("keyup");
                     e.keyCode = 13;
                     $("#userInput").val($(this).text()).trigger(e);
                 }).prependTo("#trends");
@@ -26,12 +26,12 @@ $(function () {
         return value.replace(punctuation, "").replace(/\s/, " ").replace(/ +/, " ");
     }
 
-    $("#userInput").on("keydown keyup", function (e) {
+    $("#userInput").keyup(function (e) {
         $(this).val(fix($(this).val()));
 
         /* enter key */
         if (e.keyCode == 13 && $(this).val().trim()) {
-            $("<input type='text' /><br />").val($(this).val()).appendTo("#nouns-content").on("keydown keyup", function (e) {
+            $("<input type='text' /><br />").val($(this).val()).appendTo("#nouns-content").keyup(function (e) {
                 $(this).val(fix($(this).val()));
                 if (!$(this).val().trim()) {
                     $(this).find("+ br").remove();
@@ -44,4 +44,10 @@ $(function () {
         }
     });
     /* }}} */
+
+    /* resizing */
+    $(window).resize(function () {
+        $("#nouns").css("bottom", $(document).height() - $("#userInput").offset().top);
+    });
+    $(window).resize();
 });

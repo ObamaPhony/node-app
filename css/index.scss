@@ -1,48 +1,69 @@
+#userInput, #nouns input {
+    width: 100%;
+}
+
 #nouns {
     position: absolute;
 
     /* bounding box */
-    top:      0;
-    bottom: 50%;
-    margin-bottom: 6em;
+    top: 0;
+    margin-bottom: 1em;
 
     /* styling */
     text-align: center;
 
     /* scrolling */
     overflow-y: auto;
-}
 
-#nouns-content {
-    max-height: 100%;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-}
+    #nouns-content {
+        /* scrolling */
+        max-height: 100%;
+        width: 100%;
 
-#nouns-content input {
-    margin-top: 0.5em;
+        /* positioning */
+        position: absolute;
+        bottom: 0;
+
+        input {
+            margin-top: 0.5em;
+        }
+    }
+
 }
 
 #trends .button {
     margin: 1.5em 0.5em;
+
+    &.hidden {
+        /* should only have height, no width */
+
+        border-left: 0px;
+        border-right: 0px;
+
+        padding-left: 0px;
+        padding-right: 0px;
+
+        margin-left: 0px;
+        margin-right: 0px;
+
+        width: 0px;
+    }
 }
 
-#userInput, #nouns input {
-    width: 100%;
-}
+#rotate {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-#trends .button.hidden {
-    /* should only have height, no width */
+    background: #2196f3;
+    color: #ffffff;
 
-    border-left: 0px;
-    border-right: 0px;
+    display: none;
+    z-index: 9999;
 
-    padding-left: 0px;
-    padding-right: 0px;
-
-    margin-left: 0px;
-    margin-right: 0px;
-
-    width: 0px;
+    @media #{$media-short} {
+        display: block;
+    }
 }

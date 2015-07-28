@@ -2,11 +2,11 @@ h1, h2 {
     font-weight: 300;
 }
 
-#focus {
+.middle {
     @include vertical-center; /* center vertically */
 }
 
-#focus, .focus {
+.focus {
     /*
      * this is the focus of the page, should be prominent but minimal
      * centered vertically but horizontally only on larger devices
