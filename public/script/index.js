@@ -22,17 +22,21 @@ $(function () {
 
     /* input box management {{{ */
     var punctuation = /[^a-zA-Z0-9 ]+/;
-    function fix(value) {
-        return value.replace(punctuation, "").replace(/\s/, " ").replace(/ +/, " ");
+    function fix(that) {
+        var value = $(that).val();
+        value = value.replace(punctuation, "").replace(/\s/, " ").replace(/ +/, " ");
+        if ($(that).val() != value) {
+            $(that).val(value);
+        }
     }
 
     $("#userInput").keyup(function (e) {
-        $(this).val(fix($(this).val()));
+        fix(this);
 
         /* enter key */
         if (e.keyCode == 13 && $(this).val().trim()) {
             $("<input type='text' /><br />").val($(this).val()).appendTo("#nouns-content").keyup(function (e) {
-                $(this).val(fix($(this).val()));
+                fix(this);
                 if (!$(this).val().trim()) {
                     $(this).find("+ br").remove();
                     $(this).remove();
