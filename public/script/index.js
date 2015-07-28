@@ -33,6 +33,11 @@ $(function () {
         if (e.keyCode == 13 && $(this).val().trim()) {
             $("<input type='text' /><br />").val($(this).val()).appendTo("#nouns-content").on("keydown keyup", function (e) {
                 $(this).val(fix($(this).val()));
+                if (!$(this).val().trim()) {
+                    $(this).find("+ br").remove();
+                    $(this).remove();
+                    $("#userInput").focus();
+                }
             });
             $(this).val("");
             $("#nouns").animate({ scrollTop: $("#nouns")[0].scrollHeight });
