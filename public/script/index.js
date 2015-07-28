@@ -8,7 +8,7 @@ $(function () {
         $(this).val(fix($(this).val()));
 
         /* enter key */
-        if (e.keyCode == 13) {
+        if (e.keyCode == 13 && $(this).val().trim()) {
             $("<input type='text' /><br />").val($(this).val()).appendTo("#nouns-content").on("keydown keyup", function (e) {
                 $(this).val(fix($(this).val()));
             });
