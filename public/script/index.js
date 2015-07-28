@@ -4,12 +4,12 @@ $(function () {
         return value.replace(punctuation, "").replace(/\s/, " ").replace(/ +/, " ");
     }
 
-    $("#userInput").keydown(function (e) {
+    $("#userInput").on("keydown keyup", function (e) {
         $(this).val(fix($(this).val()));
 
         /* enter key */
         if (e.keyCode == 13) {
-            $("<input type='text' /><br />").val($(this).val()).appendTo("#nouns-content").keydown(function (e) {
+            $("<input type='text' /><br />").val($(this).val()).appendTo("#nouns-content").on("keydown keyup", function (e) {
                 $(this).val(fix($(this).val()));
             });
             $(this).val("");
