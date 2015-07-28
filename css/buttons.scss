@@ -13,17 +13,22 @@
     background: $accent;
     color: $accent-text;
 
-    /* margins and alignment */
+    /* alignment */
     text-align: center;
-    margin: 0.5em;
+    vertical-align: bottom; /* weird buggy thing */
+
+    /* FORCE SAME SIZE AS TEXTBOXES */
+    border: $accent 2px solid;
 
     /* mouse hover */
     &:hover {
         background: $accent-light;
+        border: $accent-light 2px solid;
     }
 
     /* mouse down, touch */
     &:active {
         background: $accent-dark;
+        border: $accent-dark 2px solid;
     }
 }
