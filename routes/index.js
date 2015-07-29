@@ -9,6 +9,8 @@ router.get("/topics", function (request, response) {
     response.render("topics");
 });
 
+router.use("/api/", require("./rest"));
+
 router.use(function (request, response, next) {
     response.status(404);
     response.format({
