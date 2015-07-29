@@ -23,6 +23,17 @@ body {
     bottom: 8px;
 }
 
+/* disable selection */
+@mixin unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
 /* vertically align element */
 @mixin vertical-center {
     /* to vertically align an element we must

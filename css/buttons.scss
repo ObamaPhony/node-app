@@ -2,6 +2,7 @@
     /* needed for a.button (and others) */
     display: inline-block;
     text-decoration: none;
+    @include unselectable;
 
     /* never use focus border */
     outline: none;
