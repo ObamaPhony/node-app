@@ -30,12 +30,12 @@ $(function () {
         }
     }
 
-    $("#userInput").keyup(function (e) {
+    $("#userInput").on("keyup change", function (e) {
         fix(this);
 
         /* enter key */
         if (e.keyCode == 13 && $(this).val().trim()) {
-            $("<input type='text' /><br />").val($(this).val()).appendTo("#topics-content").keyup(function (e) {
+            $("<input type='text' /><br />").val($(this).val()).appendTo("#topics-content").on("keyup change", function (e) {
                 fix(this);
                 if (!$(this).val().trim()) {
                     $(this).find("+ br").remove();
