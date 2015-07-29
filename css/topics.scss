@@ -1,5 +1,6 @@
 #main {
     bottom: 0px;
+    margin-top: 1em;
 }
 
 #userInput, #topics input {
@@ -10,8 +11,7 @@
     position: absolute;
 
     /* bounding box */
-    top: 0;
-    margin-bottom: 1em;
+    top: 0px;
 
     /* styling */
     text-align: center;
@@ -63,7 +63,7 @@
     color: #ffffff;
 
     display: none;
-    z-topics: 9999;
+    z-index: 9999;
 
     @media #{$media-short} {
         display: block;
