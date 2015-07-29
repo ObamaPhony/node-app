@@ -50,8 +50,8 @@ $(function () {
     /* }}} */
 
     /* resizing */
-    $(window).resize(function () {
-        $("#topics").css("bottom", $(document).height() - $("#userInput").offset().top);
+    $(window).on("resize orientationChange keyup mouseup", function () {
+        $("#topics").css("height", $("#main").offset().top - $("#topics").offset().top - parseInt($("#main").css("margin-top")));
     });
     $(window).resize();
 });
