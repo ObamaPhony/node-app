@@ -9,6 +9,20 @@ $media-fat:   "only screen and (min-width: 1200px)";
     box-sizing: border-box;
 }
 
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    /* margins */
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+}
+
 /* vertically align element */
 @mixin vertical-center {
     /* to vertically align an element we must

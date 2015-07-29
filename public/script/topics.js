@@ -35,7 +35,7 @@ $(function () {
 
         /* enter key */
         if (e.keyCode == 13 && $(this).val().trim()) {
-            $("<input type='text' /><br />").val($(this).val()).appendTo("#nouns-content").keyup(function (e) {
+            $("<input type='text' /><br />").val($(this).val()).appendTo("#topics-content").keyup(function (e) {
                 fix(this);
                 if (!$(this).val().trim()) {
                     $(this).find("+ br").remove();
@@ -44,14 +44,14 @@ $(function () {
                 }
             });
             $(this).val("");
-            $("#nouns").animate({ scrollTop: $("#nouns")[0].scrollHeight });
+            $("#topics").animate({ scrollTop: $("#topics")[0].scrollHeight });
         }
     });
     /* }}} */
 
     /* resizing */
     $(window).resize(function () {
-        $("#nouns").css("bottom", $(document).height() - $("#userInput").offset().top);
+        $("#topics").css("bottom", $(document).height() - $("#userInput").offset().top);
     });
     $(window).resize();
 });

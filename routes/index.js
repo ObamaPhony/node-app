@@ -5,6 +5,10 @@ router.get("/", function (request, response) {
     response.render("index");
 });
 
+router.get("/topics", function (request, response) {
+    response.render("topics");
+});
+
 router.use(function (request, response, next) {
     response.status(404);
     response.format({
