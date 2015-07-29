@@ -3,4 +3,6 @@
 @import "buttons";
 @import "text";
 
-@import "index";
+html.topics {
+    @import "topics";
+}

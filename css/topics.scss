@@ -1,8 +1,12 @@
-#userInput, #nouns input {
+#main {
+    bottom: 0px;
+}
+
+#userInput, #topics input {
     width: 100%;
 }
 
-#nouns {
+#topics {
     position: absolute;
 
     /* bounding box */
@@ -15,7 +19,7 @@
     /* scrolling */
     overflow-y: auto;
 
-    #nouns-content {
+    #topics-content {
         /* scrolling */
         max-height: 100%;
         width: 100%;
@@ -61,7 +65,7 @@
     color: #ffffff;
 
     display: none;
-    z-index: 9999;
+    z-topics: 9999;
 
     @media #{$media-short} {
         display: block;

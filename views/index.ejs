@@ -1,28 +1,13 @@
-<% var messages = ["PREACH TO ME!", "Get my speech", "Just do it already!", "ME WANT SPEECH!"]; %>
-
 <!DOCTYPE html>
 <html>
     <head>
         <% include header.ejs %>
-        <script src="/script/index.js"></script>
     </head>
     <body>
-        <div id="rotate">
-            <div class="focus middle">
-                <h1>Rotate da device!</h1>
-            </div>
-        </div>
-        <div id="nouns" class="focus">
-            <div id="nouns-content"></div>
-        </div>
         <div class="focus middle">
-            <noscript><h1>What? Why no JavaScript!</h1></noscript>
-            <input type="text" id="userInput" placeholder="Enter a noun" />
-            <div id="trends">
-                <a class="button hidden">&nbsp;</a>
-            </div>
-            <p><small><strong>DISCLAIMER: </strong> please don't take offence. BTW, don't sue us. Just don't.</small></p>
-            <a class="button" id="submit"><%= messages[Math.floor(Math.random() * messages.length)] %></a>
+            <h1>Today will be awesome</h1>
+            <h2>Someone made a speech about it</h2>
+            <a href="/topics" class="button">I wanna make one too</a>
         </div>
     </body>
 </html>
