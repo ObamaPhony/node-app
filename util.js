@@ -40,8 +40,8 @@ exports.error = function (response, err) {
     this.logger.error(err);
 };
 
-exports.spawn = function (bin, stdin, next) {
-    var proc = spawn(bin);
+exports.spawn = function (bin, stdin, next, args) {
+    var proc = spawn(bin, args);
     var buffer = "";
 
     proc.stdout.on("data", function (data) {
