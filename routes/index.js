@@ -21,7 +21,7 @@ router.use(function (request, response, next) {
 
         /* valid JSON */
         "application/json": function () {
-            response.send({ error: 404 });
+            response.send({ err: 404 });
         },
 
         /* fancy error page */

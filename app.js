@@ -3,26 +3,28 @@ var path = require("path");
 
 var app = express();
 
-/* templating */
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+require("./database")(function () {
+    /* templating */
+    app.set("view engine", "ejs");
+    app.set("views", path.join(__dirname, "views"));
 
-/* SASS */
-var sass = require("node-sass-middleware");
-app.use(sass({
-    src: __dirname,
-    dest: path.join(__dirname, "public"),
-    outputStyle: "compressed",
-    prefix: "css"
-}));
+    /* SASS */
+    var sass = require("node-sass-middleware");
+    app.use(sass({
+        src: __dirname,
+        dest: path.join(__dirname, "public"),
+        outputStyle: "compressed",
+        prefix: "css"
+    }));
 
-/* static files */
-app.use(express.static(path.join(__dirname, "public")));
+    /* static files */
+    app.use(express.static(path.join(__dirname, "public")));
 
-/* modules */
+    /* modules */
 
-/* URL routes */
-app.use(require("./routes"));
+    /* URL routes */
+    app.use(require("./routes"));
 
-/* start server */
-app.listen(process.env.PORT || 8080);
+    /* start server */
+    app.listen(process.env.PORT || 8080);
+});
