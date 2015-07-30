@@ -19,7 +19,9 @@ router.get("/", function (request, response) {
      * ]
      */
 
-    db.collection("sources").find().map(function (doc) {
+    db.collection("sources").find({
+        preset: true
+    }).map(function (doc) {
         return {
             id: doc._id,
             name: doc.name
