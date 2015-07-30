@@ -3,6 +3,9 @@ var path = require("path");
 
 var app = express();
 
+/* logging */
+app.use(require("morgan")("combined", { stream: require("./util").log }));
+
 require("./database")(function () {
     /* templating */
     app.set("view engine", "ejs");
@@ -19,8 +22,6 @@ require("./database")(function () {
 
     /* static files */
     app.use(express.static(path.join(__dirname, "public")));
-
-    /* modules */
 
     /* URL routes */
     app.use(require("./routes"));
