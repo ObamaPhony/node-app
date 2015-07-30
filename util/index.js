@@ -1,1 +1,0 @@
-exports.sources = require("./sources");
