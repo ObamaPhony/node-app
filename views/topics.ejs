@@ -7,23 +7,25 @@
         <script src="/script/topics.js"></script>
     </head>
     <body>
-        <div id="rotate">
+        <div id="rotate" class="topics">
             <div class="focus middle">
                 <h1>Rotate da device!</h1>
             </div>
         </div>
-        <div id="topics" class="focus">
+        <div id="topics" class="focus topics">
             <div id="topics-content"></div>
         </div>
         <div class="focus" id="main">
-            <noscript><h1>What? Why no JavaScript!</h1></noscript>
-            <input type="text" id="userInput" placeholder="Enter a topic" />
-            <p>Stuck? Try some of these!</p>
-            <p id="trends">
-                <a class="button hidden">&nbsp;</a>
-            </p>
-            <p><small><strong>DISCLAIMER: </strong> please don't take offence. BTW, don't sue us. Just don't.</small></p>
-            <p><a class="button" id="submit"><%= messages[Math.floor(Math.random() * messages.length)] %></a></p>
+            <div class="topics">
+                <noscript><h1>What? Why no JavaScript!</h1></noscript>
+                <input type="text" id="userInput" placeholder="Enter a topic" />
+                <p>Stuck? Try some of these!</p>
+                <p id="trends">
+                    <a class="button hidden">&nbsp;</a>
+                </p>
+                <p><small><strong>DISCLAIMER: </strong> please don't take offence. BTW, don't sue us. Just don't.</small></p>
+                <p><a class="button" id="submit"><%= messages[Math.floor(Math.random() * messages.length)] %></a></p>
+            </div>
         </div>
     </body>
 </html>
