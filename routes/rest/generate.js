@@ -16,7 +16,6 @@ router.get(/^\/(.+?)\/(([A-Za-z0-9 \/]|%20)+\/[0-9]+)$/, function (request, resp
      */
 
     var id = request.params[0], args = request.params[1].split("/");
-    console.log(id, args);
 
     if (!mongo.ObjectId.isValid(id)) {
         status(response, 404);
