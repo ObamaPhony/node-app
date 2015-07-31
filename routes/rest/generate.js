@@ -18,6 +18,7 @@ router.get(/^\/(.+?)\/(([A-Za-z0-9 \/]|%20)+\/[0-9]+)$/, function (request, resp
      * output:
      * {
      *     id: 'identifier',
+     *     speaker: 'source name',
      *     constructs: {
      *         'topic': ['sentence', ],
      *     }
@@ -58,6 +59,7 @@ router.get(/^\/(.+?)\/(([A-Za-z0-9 \/]|%20)+\/[0-9]+)$/, function (request, resp
 
                     db.collection("generated").insert({
                         createdAt: new Date(),
+                        speaker: doc.name,
                         constructs: json /* TODO: paragraphs? sentences */
                     }, function (err, result) {
                         if (err) {
@@ -108,6 +110,7 @@ router.post("/", function (request, response) {
         }
 
         db.collection("speeches").insert({
+            speaker: doc.speaker,
             paragraphs: paragraphs
         }, function (err, result) {
             if (err) {
