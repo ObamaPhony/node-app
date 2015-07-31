@@ -63,7 +63,7 @@ $(window).on("resize orientationChange keyup mouseup", function () {
 $(window).resize();
 // }}}
 
-// submit {{{
+// user interaction {{{
 $("#submit").click(function () {
     var topics = [];
     $("#topics-content input, #userInput").each(function () {
@@ -89,11 +89,54 @@ $("#submit").click(function () {
                 $("<a/>").addClass("button").text(speaker.name).appendTo("#speakers").after("<br />")
                     .click(function () {
                         $("#speakers").hide();
+                        $("#generate").parent().removeClass("middle");
                         $("#loading").show();
                         var args = [speaker.id].concat(topics).concat([NUMBER_CHOICES]);
                         API("generate", args, function (data) {
-                            for (var i = 0; i < data.length; i++) {
+                            var constructs = data.constructs;
+                            var list = $("#choices .list");
+                            for (var topic in constructs) {
+                                (function (choices) {
+                                    for (var i = 0; i < choices.length; i++) {
+                                        (function (choice) {
+                                            var first = choice.split(".")[0];
+                                            var name = "choice!" + escape(topic) + "!" + i;
+                                            var radio = $("<input type='radio'/>").attr("id", name).attr("name", topic);
+                                            var label = $("<label/>").attr("for", name).text(first).appendTo(list)
+                                                .before(radio).after("<br />");
+                                            if (i == 0) {
+                                                radio.click();
+                                            }
+                                            choices[i] = radio;
+                                        })(choices[i]);
+                                    }
+                                    list.append("<br />");
+                                })(constructs[topic]);
                             }
+                            $("#generate").click(function () {
+                                $("#choices").hide();
+                                $("#loading").show();
+                                var request = {
+                                    id: data.id,
+                                    constructs: {}
+                                };
+
+                                for (topic in constructs) {
+                                    request.constructs[topic] = [];
+                                    var list = constructs[topic];
+                                    for (var i = 0; i < list.length; i++) {
+                                        if (list[i].prop("checked")) {
+                                            request.constructs[topic].push(i);
+                                        }
+                                    }
+                                }
+
+                                API("generate", request, function (data) {
+                                    location.href = "/speech/" + data.id;
+                                });
+                            });
+                            $("#loading").hide();
+                            $("#choices").show();
                         });
                     });
             })(data[i]);

@@ -4,5 +4,15 @@ function API(name, args, callback) {
         args = [];
     }
 
-    $.getJSON("/api/" + name + "/" + args.join("/"), callback);
+    if (Array.isArray(args)) {
+        $.getJSON("/api/" + name + "/" + args.join("/"), callback);
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "/api/" + name,
+            contentType: "application/json",
+            data: JSON.stringify(args),
+            success: callback
+        });
+    }
 }
