@@ -5,6 +5,7 @@ var mongo = require("mongodb");
 module.exports = router;
 
 var status = util.status;
+var error = util.error;
 
 function analyse(doc, next) {
     if (doc.analysis) {
@@ -46,7 +47,7 @@ router.get("/", function (request, response) {
         };
     }).toArray(function (err, sources) {
         if (err) {
-            status(response, 500);
+            error(err, response);
             return;
         }
 
@@ -76,7 +77,7 @@ router.get("/:id", function (request, response) {
         _id: mongo.ObjectId(request.params.id),
     }, function (err, doc) {
         if (err) {
-            status(response, 500);
+            error(err, response);
             return;
         }
 
