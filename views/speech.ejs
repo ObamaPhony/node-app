@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include header.ejs %>
+    </head>
+    <body>
+        <% for (var i = 0; i < paragraphs.length; i++) { %>
+        <p><%= paragraphs[i] %></p>
+        <% } %>
+    </body>
+</html>

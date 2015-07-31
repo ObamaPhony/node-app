@@ -9,6 +9,8 @@ router.get("/make", function (request, response) {
     response.render("make");
 });
 
+router.get("/speech/:id", require("./speech"));
+
 router.use("/api/", require("./rest"));
 
 router.use(function (request, response, next) {
