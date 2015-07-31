@@ -1,4 +1,7 @@
+var NUMBER_CHOICES = 3;
+
 $(function () {
+    $("#loading").hide();
 
 // Google Trends {{{
 var TRENDS = 5;
@@ -24,6 +27,7 @@ $.ajax({
 // input box management {{{
 var punctuation = /[^a-zA-Z0-9 ]+/;
 function fix(that) {
+    $(that).removeClass("error");
     var value = $(that).val();
     value = value.replace(punctuation, "").replace(/\s/, " ").replace(/ +/, " ");
     if ($(that).val() != value) {
@@ -82,7 +86,16 @@ $("#submit").click(function () {
     API("sources", function (data) {
         for (var i = 0; i < data.length; i++) {
             (function (speaker) {
-                $("<a/>").addClass("button").text(speaker.name).appendTo("#speakers").after("<br />");
+                $("<a/>").addClass("button").text(speaker.name).appendTo("#speakers").after("<br />")
+                    .click(function () {
+                        $("#speakers").hide();
+                        $("#loading").show();
+                        var args = [speaker.id].concat(topics).concat([NUMBER_CHOICES]);
+                        API("generate", args, function (data) {
+                            for (var i = 0; i < data.length; i++) {
+                            }
+                        });
+                    });
             })(data[i]);
         }
 
@@ -94,4 +107,4 @@ $("#submit").click(function () {
 
 });
 
-// vim: set fdm=marker: */
+/* vim: set fdm=marker: */
