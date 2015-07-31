@@ -78,9 +78,7 @@ router.get(/^\/(.+?)\/(([A-Za-z0-9 \/]|%20)+\/[0-9]+)$/, function (request, resp
 });
 
 router.post("/", function (request, response) {
-    console.log(request.body);
     var id = request.body.id;
-    console.log(id);
     
     if (!mongo.ObjectId.isValid(id)) {
         status(response, 404);
@@ -102,7 +100,6 @@ router.post("/", function (request, response) {
 
         var paragraphs = [];
         for (var topic in doc.constructs) {
-            console.log(request.body);
             var indexes = request.body.constructs[topic];
             var paragraph = indexes.map(function (i) {
                 return doc.constructs[topic][i];
