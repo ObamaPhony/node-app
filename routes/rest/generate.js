@@ -14,6 +14,14 @@ router.get(/^\/(.+?)\/(([A-Za-z0-9 \/]|%20)+\/[0-9]+)$/, function (request, resp
     /*
      * should return 'count' "constructs" (TODO: paragraphs? sentences?) generated
      * about 'topic', 'topic', etc. for speech id 'id'
+     *
+     * output:
+     * {
+     *     id: 'identifier',
+     *     constructs: {
+     *         'topic': ['sentence', ],
+     *     }
+     * }
      */
 
     var id = request.params[0], args = request.params[1].split("/");
@@ -65,6 +73,55 @@ router.get(/^\/(.+?)\/(([A-Za-z0-9 \/]|%20)+\/[0-9]+)$/, function (request, resp
                     });
                 });
             }, args);
+        });
+    });
+});
+
+router.post("/", function (request, response) {
+    console.log(request.body);
+    var id = request.body.id;
+    console.log(id);
+    
+    if (!mongo.ObjectId.isValid(id)) {
+        status(response, 404);
+        return;
+    }
+
+    db.collection("generated").findOne({
+        _id: mongo.ObjectId(id),
+    }, function (err, doc) {
+        if (err) {
+            error(err, response);
+            return;
+        }
+
+        if (doc == null) {
+            status(response, 404);
+            return;
+        }
+
+        var paragraphs = [];
+        for (var topic in doc.constructs) {
+            console.log(request.body);
+            var indexes = request.body.constructs[topic];
+            var paragraph = indexes.map(function (i) {
+                return doc.constructs[topic][i];
+            }).join("");
+            paragraphs.push(paragraph);
+        }
+
+        db.collection("speeches").insert({
+            paragraphs: paragraphs
+        }, function (err, result) {
+            if (err) {
+                error(err, response);
+                return;
+            }
+
+            var doc = result.ops[0]
+            response.json({
+                id: doc._id
+            });
         });
     });
 });

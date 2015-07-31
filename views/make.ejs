@@ -4,6 +4,7 @@
 <html class="make">
     <head>
         <% include header.ejs %>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20150503/json2.min.js"></script>
         <script src="/script/make.js"></script>
     </head>
     <body>
@@ -28,6 +29,10 @@
                 <p><a class="button" id="submit"><%= messages[Math.floor(Math.random() * messages.length)] %></a></p>
             </div>
             <div id="speakers"></div>
+            <div id="choices">
+                <div class="list"></div>
+                <a class="button" id="generate">DO IT!</a>
+            </div>
         </div>
     </body>
 </html>
