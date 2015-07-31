@@ -5,6 +5,10 @@
 
 #userInput, #topics input {
     width: 100%;
+
+    &.error {
+        border-color: $accent-dark;
+    }
 }
 
 #topics {
