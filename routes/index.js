@@ -5,8 +5,8 @@ router.get("/", function (request, response) {
     response.render("index");
 });
 
-router.get("/topics", function (request, response) {
-    response.render("topics");
+router.get("/make", function (request, response) {
+    response.render("make");
 });
 
 router.use("/api/", require("./rest"));
