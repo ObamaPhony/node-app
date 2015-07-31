@@ -22,6 +22,8 @@ function analyse(doc, next) {
     }
 }
 
+module.exports.analyse = analyse;
+
 router.get("/", function (request, response) {
     /*
      * should list all preset sources 
@@ -90,41 +92,6 @@ router.get("/:id", function (request, response) {
                 analysis: doc.analysis,
                 err: null
             });
-        });
-    });
-});
-
-/* GET /:id/:topic/:topic/:count */
-router.get(/^\/(.*?)\/([A-Za-z]+\/[0-9]+)$/, function (request, response) {
-    /*
-     * should return 'count' "things" (TODO: paragraphs? sentences?) generated about
-     * 'topic', 'topic', etc. for speech id 'id'
-     */
-
-    var id = request.params[0], args = request.params[1].split("/");
-
-    if (!mongo.ObjectId.isValid(id)) {
-        status(response, 404);
-        return;
-    }
-
-    db.collection("sources").findOne({
-        _id: mongo.ObjectId(id),
-    }, function (err, doc) {
-        if (err) {
-            status(response, 500);
-            return;
-        }
-
-        if (doc == null) {
-            status(response, 404);
-            return;
-        }
-
-        analyse(doc, function (doc) {
-            util.spawn("./bin/generate", JSON.stringify(doc.analysis), function (json) {
-                response.json(json);
-            }, args);
         });
     });
 });
