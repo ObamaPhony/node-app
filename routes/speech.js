@@ -17,16 +17,19 @@ module.exports = function (request, response) {
         _id: mongo.ObjectId(id),
     }, function (err, doc) {
         if (err) {
-            error(err, response);
+            response.status(500);
+            response.render("error");
             return;
         }
 
         if (doc == null) {
-            status(response, 404);
+            response.status(404);
+            response.render("error");
             return;
         }
 
         response.render("speech", {
+            speaker: doc.speaker,
             paragraphs: doc.paragraphs
         });
     });

@@ -4,8 +4,11 @@
         <% include header.ejs %>
     </head>
     <body>
-        <% for (var i = 0; i < paragraphs.length; i++) { %>
-        <p><%= paragraphs[i] %></p>
-        <% } %>
+        <div class="focus">
+            <% for (var i = 0; i < paragraphs.length; i++) { %>
+            <p><%= paragraphs[i] %></p>
+            <% } %>
+            <em><%= speaker %></em>
+        </div>
     </body>
 </html>
