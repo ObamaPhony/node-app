@@ -36,14 +36,14 @@ $("#userInput").on("keyup change", function (e) {
 
     // enter key */
     if (e.keyCode == 13 && $(this).val().trim()) {
-        $("<input type='text' /><br />").val($(this).val()).appendTo("#topics-content").on("keyup change", function (e) {
+        $("<input type='text' />").val($(this).val()).appendTo("#topics-content").on("keyup change", function (e) {
             fix(this);
             if (!$(this).val().trim()) {
                 $(this).find("+ br").remove();
                 $(this).remove();
                 $("#userInput").focus();
             }
-        });
+        }).before("<br />");
         $(this).val("");
         $("#topics").animate({ scrollTop: $("#topics")[0].scrollHeight });
     }
@@ -52,7 +52,9 @@ $("#userInput").on("keyup change", function (e) {
 
 // resizing {{{
 $(window).on("resize orientationChange keyup mouseup", function () {
-    $("#topics").css("height", $("#main").offset().top - $("#topics").offset().top - parseInt($("#main").css("margin-top")));
+    if ($("#main").length) {
+        $("#topics").css("height", $("#main").offset().top - $("#topics").offset().top - parseInt($("#main").css("margin-top")));
+    }
 });
 $(window).resize();
 // }}}
@@ -72,9 +74,20 @@ $("#submit").click(function () {
         $("#userInput").addClass("error");
         return false;
     }
+        
+    $("html .topics").hide();
+    $("#loading").show();
+    $("#main").removeAttr("id").addClass("middle");
 
     API("sources", function (data) {
-        $("html.topics .topics").hide();
+        for (var i = 0; i < data.length; i++) {
+            (function (speaker) {
+                $("<a/>").addClass("button").text(speaker.name).appendTo("#speakers").after("<br />");
+            })(data[i]);
+        }
+
+        $("#loading").hide();
+        $("#speakers").show();
     });
 });
 // }}}
