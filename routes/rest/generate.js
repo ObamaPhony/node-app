@@ -8,13 +8,15 @@ var status = util.status;
 var analyse = require("./sources").analyse;
 
 /* GET /:id/:topic/:topic/:count */
-router.get(/^\/(.+?)\/([A-Za-z\/]+\/[0-9]+)$/, function (request, response) {
+/* hacky regexp because Express only decodes '%20' (space) after matching */
+router.get(/^\/(.+?)\/(([A-Za-z0-9 \/]|%20)+\/[0-9]+)$/, function (request, response) {
     /*
      * should return 'count' "constructs" (TODO: paragraphs? sentences?) generated
      * about 'topic', 'topic', etc. for speech id 'id'
      */
 
     var id = request.params[0], args = request.params[1].split("/");
+    console.log(id, args);
 
     if (!mongo.ObjectId.isValid(id)) {
         status(response, 404);
