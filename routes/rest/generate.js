@@ -5,6 +5,7 @@ var mongo = require("mongodb");
 module.exports = router;
 
 var status = util.status;
+var error = util.error;
 var analyse = require("./sources").analyse;
 
 /* GET /:id/:topic/:topic/:count */
@@ -26,7 +27,7 @@ router.get(/^\/(.+?)\/(([A-Za-z0-9 \/]|%20)+\/[0-9]+)$/, function (request, resp
         _id: mongo.ObjectId(id),
     }, function (err, doc) {
         if (err) {
-            status(response, 500);
+            error(err, response);
             return;
         }
 
@@ -43,7 +44,7 @@ router.get(/^\/(.+?)\/(([A-Za-z0-9 \/]|%20)+\/[0-9]+)$/, function (request, resp
                     expireAfterSeconds: 2 * 60 * 60
                 }, function (err) {
                     if (err) {
-                        status(response, 500);
+                        error(err, response);
                         return;
                     }
 
@@ -52,7 +53,7 @@ router.get(/^\/(.+?)\/(([A-Za-z0-9 \/]|%20)+\/[0-9]+)$/, function (request, resp
                         constructs: json /* TODO: paragraphs? sentences */
                     }, function (err, result) {
                         if (err) {
-                            status(response, 500);
+                            error(err, response);
                             return;
                         }
 
