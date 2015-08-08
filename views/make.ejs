@@ -28,7 +28,19 @@
                 <p><small><strong>DISCLAIMER: </strong> please don't take offence. BTW, don't sue us. Just don't.</small></p>
                 <p><a class="button" id="submit"><%= messages[Math.floor(Math.random() * messages.length)] %></a></p>
             </div>
-            <div id="speakers"></div>
+            <div id="speakers">
+                <h2>Choose a speaker</h2>
+                <div class="list"></div>
+                <p><strong>OR</strong></p>
+                <h2>Upload your own!</h2>
+                <p><small>maximum file size <strong>(<%= speechMB %> MB)</strong></small></p>
+                <form target="uploader" action="/uploader">
+                    <a class="button" id="upload">Upload</a>
+                    <input id="uploader" type="file" style="display: none" />
+                    <input id="upload-submit" type="submit" value="Submit" style="display: none" />
+                </form>
+                <iframe name="uploader" style="display: none"></iframe>
+            </div>
             <div id="choices">
                 <div class="list"></div>
                 <a class="button" id="generate">DO IT!</a>

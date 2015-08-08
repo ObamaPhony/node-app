@@ -1,4 +1,4 @@
-[type=button], button, .button {
+[type=button], [type=submit], button, .button {
     /* needed for a.button (and others) */
     display: inline-block;
     text-decoration: none;
@@ -9,6 +9,7 @@
 
     /* normalise padding */
     padding: 1em;
+    font-size: 1em;
 
     /* accent colors */
     background: $accent;

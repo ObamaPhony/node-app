@@ -6,7 +6,9 @@ router.get("/", function (request, response) {
 });
 
 router.get("/make", function (request, response) {
-    response.render("make");
+    response.render("make", {
+        speechMB: speechBytes / 1024 / 1024
+    });
 });
 
 router.get("/speech/:id", require("./speech"));

@@ -63,6 +63,16 @@ $(window).on("resize orientationChange keyup mouseup", function () {
 $(window).resize();
 // }}}
 
+// uploading {{{
+$("#uploader").change(function () {
+    $("#upload-submit").show();
+});
+
+$("#upload").click(function () {
+    $("#uploader").click();
+});
+// }}}
+
 // user interaction {{{
 $("#submit").click(function () {
     var topics = [];
@@ -86,7 +96,7 @@ $("#submit").click(function () {
     API("sources", function (data) {
         for (var i = 0; i < data.length; i++) {
             (function (speaker) {
-                $("<a/>").addClass("button").text(speaker.name).appendTo("#speakers").after("<br />")
+                $("<a/>").addClass("button").text(speaker.name).appendTo("#speakers .list").after("<br />")
                     .click(function () {
                         $("#speakers").hide();
                         $("#generate").parent().removeClass("middle");
