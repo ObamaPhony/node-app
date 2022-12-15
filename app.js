@@ -12,12 +12,14 @@ require("./database")(function () {
     app.set("views", path.join(__dirname, "views"));
 
     /* SASS */
-    var sass = require("node-sass-middleware");
-    app.use(sass({
-        src: __dirname,
-        dest: path.join(__dirname, "public"),
+
+    var sassMiddleWare = require("node-sass-middleware");
+    app.use(sassMiddleWare({
+        src: path.join(__dirname, "css"),
+        dest: path.join(__dirname, "public/css"),
+        debug: true,
         outputStyle: "compressed",
-        prefix: "css"
+        prefix: "/css"
     }));
 
     /* body parsing */

@@ -1,22 +1,22 @@
-var spawn = require("child_process").spawn;
-var winston = require("winston");
+var spawn = require('child_process').spawn;
+var winston = require('winston');
 
-exports.logger = new winston.Logger({
+exports.logger = winston.createLogger({
     transports: [
-        new winston.transports.File({
+        new (winston.transports.Console)({
+            level: 'info',
+            handleExceptions: true,
+            json: false,
+            colorize: true
+        }),
+        new (winston.transports.File)({
             level: 'info',
             filename: './app.log',
             handleExceptions: true,
             maxSize: 5242880,
             json: true,
-            maxFiles: 5,
-            colorize: false
-        }),
-        new winston.transports.Console({
-            level: 'debug',
-            handleExceptions: true,
-            json: false,
-            colorize: true
+            maxfiles: 6,
+            colorize: false,
         })
     ],
     exitOnError: false
@@ -42,13 +42,13 @@ exports.error = function (response, err) {
 
 exports.spawn = function (bin, stdin, next, args) {
     var proc = spawn(bin, args);
-    var buffer = "";
+    var buffer = '';
 
-    proc.stdout.on("data", function (data) {
+    proc.stdout.on('data', function (data) {
         buffer += data;
     });
 
-    proc.stdout.on("end", function () {
+    proc.stdout.on('end', function () {
         var json = JSON.parse(buffer);
         next(json);
     });
