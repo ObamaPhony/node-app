@@ -7,13 +7,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ObamaPhony/obama-front-end.git"
+    "url": "git+https://github.com/ObamaPhony/node-app.git"
   },
   "author": "spudowiar",
   "bugs": {
-    "url": "https://github.com/ObamaPhony/obama-front-end/issues"
+    "url": "https://github.com/ObamaPhony/node-app/issues"
   },
-  "homepage": "https://github.com/ObamaPhony/obama-front-end#readme",
+  "homepage": "https://github.com/ObamaPhony/node-app#readme",
   "dependencies": {
     "body-parser": "^1.13.2",
     "ejs": "^2.3.3",
