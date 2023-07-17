@@ -21,7 +21,7 @@
     "mongodb": "^5.7.0",
     "morgan": "^1.10.0",
     "node-sass-middleware": "^1.0.1",
-    "winston": "^3.9.0",
+    "winston": "^3.10.0",
     "winston-journald3": "^0.1.2"
   }
 }
